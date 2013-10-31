@@ -1,0 +1,35 @@
+{
+  "name": "rampart",
+  "version": "0.0.1",
+  "main": "./lib/rampart",
+  "description": "Reverse HTTP proxy backed by distributed memory cache. Designed to protect APIs from intense GET request traffic spikes.",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lovell/rampart"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "keywords": [
+    "proxy",
+    "reverse",
+    "http",
+    "cache",
+    "distributed",
+    "cluster",
+    "dogpile",
+    "thundering",
+    "herd"
+  ],
+  "author": "Lovell Fuller <npm@lovell.info>",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "http-proxy": "*",
+    "optimist": "*",
+    "memcached": "*",
+    "node-url-utils": "*",
+    "cityhash": "*",
+    "async": "*"
+  },
+  "private": true
+}
