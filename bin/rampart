@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+/**
+ * rampart
+ *
+ * Reverse HTTP proxy backed by distributed memory cache.
+ * Designed to protect APIs from intense GET request traffic spikes.
+ * @author Lovell Fuller
+ *
+ * This code is distributed under the Apache License Version 2.0, the terms of
+ * which may be found at http://www.apache.org/licenses/LICENSE-2.0.html
+ */
+
+/* jshint es5: true */
+
+var argv = require("optimist")
+  .usage("Usage: $0")
+  .demand(["upstream"])
+  .default("memcached", "localhost:11211")
+  .default("port", 8080)
+  .describe("upstream", "Upstream HTTP service to act as reverse proxy for in the form 'host:port/path'")
+  .describe("memcached", "Comma separated list of memcached hosts in the form 'host1:11211,host2:11211'")
+  .describe("port", "TCP port for this service to listen on")
+  .argv;
+
+var upstream = argv.upstream;
+if (typeof upstream === "string" && upstream.length > 0) {
+  // Ensure upstream includes the HTTP scheme
+  var schemePrefix = "http://";
+  if (upstream.substring(0, schemePrefix.length) !== schemePrefix) {
+    upstream = schemePrefix + upstream;
+  }
+}
+
+var rampart = require("../lib/rampart");
+rampart.createServer({
+  upstream: upstream,
+  memcached: argv.memcached.split(","),
+  port: argv.port
+});
