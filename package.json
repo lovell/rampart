@@ -33,11 +33,13 @@
     "memcached": "*",
     "node-url-utils": "*",
     "cityhash": "*",
-    "async": "*"
+    "async": "*",
+    "media-type": "*"
   },
   "devDependencies": {
-    "sandboxed-module": "*",
-    "portfinder": "*"
+    "request": "*",
+    "portfinder": "*",
+    "sandboxed-module": "*"
   },
   "private": true
 }
