@@ -62,3 +62,9 @@ nginx provides the proxy\_cache feature, where each instance maintains its own f
 ### squid
 
 Versions 2.6 and 2.7 (the most recent release was 2010) of Squid provide a per-instance [Collapsed Forwarding](http://wiki.squid-cache.org/Features/CollapsedForwarding) feature to prevent the thundering herd problem. This feature is not available in version 3.x of Squid.
+
+## Test [![Build Status](https://travis-ci.org/lovell/rampart.png?branch=master)](https://travis-ci.org/lovell/rampart)
+
+Run the (currently very limited) integration tests with:
+
+    npm test
