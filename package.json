@@ -37,7 +37,8 @@
     "node-url-utils": "*",
     "cityhash": "*",
     "async": "*",
-    "media-type": "*"
+    "media-type": "*",
+    "lru-cache": "*"
   },
   "devDependencies": {
     "request": "*",
