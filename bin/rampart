@@ -21,6 +21,7 @@ var argv = require("optimist")
   .describe("upstream", "Upstream HTTP service to act as reverse proxy for in the form 'host:port/path'")
   .describe("memcached", "Comma separated list of memcached hosts in the form 'host1:11211,host2:11211'")
   .describe("port", "TCP port for this service to listen on")
+  .describe("metrics", "TCP port on which to start HTTP service providing internal metrics as JSON")
   .argv;
 
 var upstream = argv.upstream;
@@ -38,3 +39,12 @@ rampart.createServer({
   memcached: argv.memcached.split(","),
   port: argv.port
 });
+
+if (argv.metrics) {
+  require("http").createServer(function (req, res) {
+    res.writeHead(200, {
+      "Content-Type": "application/json"
+    });
+    res.end(JSON.stringify(rampart.metrics()));
+  }).listen(argv.metrics);
+}

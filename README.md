@@ -31,6 +31,8 @@ _This is alpha-quality software and is not yet ready for use in production envir
     --port       TCP port for this service to listen on
                  [default: 8080]
 
+    --metrics    TCP port on which to start HTTP service providing internal metrics as JSON
+
 ## Protection
 
 * Avoids the thundering herd problem with a "[dogpile](https://bitbucket.org/zzzeek/dogpile.core)" lock

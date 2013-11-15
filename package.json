@@ -38,7 +38,8 @@
     "cityhash": "*",
     "async": "*",
     "media-type": "*",
-    "lru-cache": "*"
+    "lru-cache": "*",
+    "measured": "*"
   },
   "devDependencies": {
     "request": "*",
